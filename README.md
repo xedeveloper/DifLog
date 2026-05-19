@@ -11,7 +11,7 @@
 </div>
 
 [![Go Version](https://img.shields.io/github/go-mod/go-version/regent-vcs/regent?style=for-the-badge&logo=go&logoColor=white&color=00ADD8)](go.mod)
-[![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-6366f1?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/regent-vcs/regent) [![Codex Compatible](https://img.shields.io/badge/Codex-Compatible-10b981?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/regent-vcs/regent) [![OpenCode Compatible](https://img.shields.io/badge/OpenCode-Compatible-ff6b35?style=for-the-badge)](https://github.com/regent-vcs/regent)
+[![Copilot CLI Compatible](https://img.shields.io/badge/Copilot%20CLI-Compatible-5dbf33?style=for-the-badge&logo=github&logoColor=white)](https://github.com/xedeveloper/DifLog)[![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-6366f1?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/xedeveloper/DifLog) [![Codex Compatible](https://img.shields.io/badge/Codex-Compatible-10b981?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/xedeveloper/DifLog) [![OpenCode Compatible](https://img.shields.io/badge/OpenCode-Compatible-ff6b35?style=for-the-badge)](https://github.com/xedeveloper/DifLog)
 
 DifLog tracks, versions, commits, diffs, and restores your AI context files (like `CLAUDE.md` and `.github/copilot-instructions.md`) with a full Bubble Tea TUI experience.
 
