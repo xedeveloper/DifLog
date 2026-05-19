@@ -1,6 +1,17 @@
-# DifLog
+<div align="center">
+  <a href="https://github.com/xedeveloper/DifLog">
+    <img
+      src="assets/diflog-logo.png"
+    />
+  </a>
+  <br/>
+  <br/>
+<h1>A Git-like version control tool for AI context & memory</h1>
+  <p>Built for developers who use ClaudeCode, OpenCode & Github Copilot CLI</p>
+</div>
 
-A Git-like version control tool for AI contexts — built for developers who use **ClaudeCode (opencode)** and **GitHub Copilot CLI**.
+[![Go Version](https://img.shields.io/github/go-mod/go-version/regent-vcs/regent?style=for-the-badge&logo=go&logoColor=white&color=00ADD8)](go.mod)
+[![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-6366f1?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/regent-vcs/regent) [![Codex Compatible](https://img.shields.io/badge/Codex-Compatible-10b981?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/regent-vcs/regent) [![OpenCode Compatible](https://img.shields.io/badge/OpenCode-Compatible-ff6b35?style=for-the-badge)](https://github.com/regent-vcs/regent)
 
 DifLog tracks, versions, commits, diffs, and restores your AI context files (like `CLAUDE.md` and `.github/copilot-instructions.md`) with a full Bubble Tea TUI experience.
 
@@ -496,6 +507,7 @@ DifLog/
 ### Domain Entities
 
 #### `AIContext`
+
 Represents a single AI context file captured at a point in time.
 
 ```go
@@ -509,6 +521,7 @@ type AIContext struct {
 ```
 
 #### `Commit`
+
 A snapshot of one or more staged `AIContext` entries.
 
 ```go
@@ -524,6 +537,7 @@ type Commit struct {
 ```
 
 #### `Branch`
+
 A named pointer to a commit hash.
 
 ```go
@@ -535,6 +549,7 @@ type Branch struct {
 ```
 
 #### `StagingIndex`
+
 The staging area — a list of contexts ready to be committed.
 
 ```go
@@ -550,6 +565,7 @@ type StagedContext struct {
 ```
 
 #### `SkillContext`
+
 A versioned snapshot of a chat session saved by the AI skill.
 
 ```go
@@ -638,6 +654,7 @@ All version control data is stored locally in the `.difLog/` directory at your p
 ```
 
 **`config.json` schema:**
+
 ```json
 {
   "branch": "main",
@@ -647,6 +664,7 @@ All version control data is stored locally in the `.difLog/` directory at your p
 ```
 
 **`staging/index.json` schema:**
+
 ```json
 [
   {
@@ -665,12 +683,14 @@ All version control data is stored locally in the `.difLog/` directory at your p
 ### ClaudeCode (opencode)
 
 **Detection markers** (checked in project root):
+
 - `CLAUDE.md`
 - `.claude/` directory
 - `opencode.jsonc`
 - `opencode.json`
 
 **Context files tracked:**
+
 - `CLAUDE.md`
 - `.claude/settings.json`
 - `.claude/settings.local.json`
@@ -683,10 +703,12 @@ All version control data is stored locally in the `.difLog/` directory at your p
 ### GitHub Copilot CLI
 
 **Detection markers** (checked in project root):
+
 - `.github/copilot-instructions.md`
 - `.github/` directory
 
 **Context files tracked:**
+
 - `.github/copilot-instructions.md`
 - Any `*.md` files inside `.github/`
 
@@ -705,11 +727,13 @@ DifLog uses the GitHub API to push and pull context data. It stores all commit a
    - Generate a token with `repo` (full repo access) scope
 
 2. Export the token:
+
    ```bash
    export DIFLOG_GITHUB_TOKEN=ghp_your_token_here
    ```
 
 3. Push to your remote repository:
+
    ```bash
    diflog push https://github.com/your-org/your-ai-contexts-repo
    ```
@@ -725,6 +749,7 @@ Running `diflog skill create` installs DifLog awareness directly into your AI to
 ### For ClaudeCode (opencode)
 
 Creates `~/.config/opencode/skills/diflog/SKILL.md` — a skill that the AI can trigger to:
+
 - Browse `.difLog/logs/commits.json` and present your context history
 - Guide you through restoring a previous context via `diflog checkout`
 - Save the current chat context snapshot via `diflog skill save`
