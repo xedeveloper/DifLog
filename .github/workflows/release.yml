@@ -2,8 +2,8 @@ name: Build and Release DifLog
 
 on:
   push:
-    branches:
-      - prod
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
@@ -39,11 +39,12 @@ jobs:
       - name: Create Github Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: prod-${{ github.sha }}\
-          name: Release prod-${{ github.sha }}
+          tag_name: prod-${{ github.ref_name }}
+          name: DifLog ${{ github.ref_name }}
           body: |
-            Automated production release from `prod` branch initiated.
-            Commit: ${{ github.sha }}
+            What's changed
+            --- 
+            -
           draft: true
           prerelease: true
           files: |
