@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  build-and-release:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -35,9 +35,6 @@ jobs:
 
           echo "Building binary for MacOS arm"
           GOOS=darwin GOARCH=arm64 go build -o dist/${BINARY_NAME}-darwin-arm-64 .
-
-          echo "Combining MacOS binaries"
-          lipo -create dist/${BINARY_NAME}-darwin-amd-64 dist/${BINARY_NAME}-darwin-arm-64 -output dist/${BINARY_NAME}-macos-universal
 
       - name: Create Github Release
         uses: softprops/action-gh-release@v2
