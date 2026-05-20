@@ -4,6 +4,7 @@
 ## Related Issue
 
 <!-- This pull request targeted for the issue ISSUE-XXXX -->
+[ISSUE-XXXX](https://github.com/xedeveloper/DifLog/issues/XXXX)
 ---
 
 ## Implementation Type
