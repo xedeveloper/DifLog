@@ -24,17 +24,18 @@ jobs:
       - name: Build Binaries
         env:
           BINARY_NAME: DifLog
+          LDFLAGS: -X github.com/xedeveloper/DifLog/internal/version.Version=${{ github.ref_name }}
         run: |
           mkdir -p dist
 
           echo "Building binary for Linux"
-          GOOS=linux GOARCH=amd64 go build -o dist/${BINARY_NAME}-linux-amd-64 .
+          GOOS=linux GOARCH=amd64 go build -ldflags "${LDFLAGS}" -o dist/${BINARY_NAME}-linux-amd-64 .
 
           echo "Building binary for MacOS darwin"
-          GOOS=darwin GOARCH=amd64 go build -o dist/${BINARY_NAME}-darwin-amd-64 .
+          GOOS=darwin GOARCH=amd64 go build -ldflags "${LDFLAGS}" -o dist/${BINARY_NAME}-darwin-amd-64 .
 
           echo "Building binary for MacOS arm"
-          GOOS=darwin GOARCH=arm64 go build -o dist/${BINARY_NAME}-darwin-arm-64 .
+          GOOS=darwin GOARCH=arm64 go build -ldflags "${LDFLAGS}" -o dist/${BINARY_NAME}-darwin-arm-64 .
 
       - name: Create Github Release
         uses: softprops/action-gh-release@v2

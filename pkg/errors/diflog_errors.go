@@ -18,6 +18,7 @@ const (
 	ErrHashingFailure    ErrorCode = "HASHING_FAILURE"
 	ErrRemoteFailure     ErrorCode = "REMOTE_FAILURE"
 	ErrInvalidArgument   ErrorCode = "INVALID_ARGUMENT"
+	ErrUnsupportedPlatform ErrorCode = "UNSUPPORTED_PLATFORM"
 )
 
 type DifLogError struct {

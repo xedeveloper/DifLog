@@ -23,6 +23,7 @@ import (
 	pushUC "github.com/xedeveloper/DifLog/internal/usecase/push"
 	skillUC "github.com/xedeveloper/DifLog/internal/usecase/skill"
 	statusUC "github.com/xedeveloper/DifLog/internal/usecase/status"
+	updateUC "github.com/xedeveloper/DifLog/internal/usecase/update"
 )
 
 type Container struct {
@@ -44,6 +45,7 @@ type Container struct {
 	CopilotAdapter *ai.CopilotCLIAdapter
 
 	RemoteRepo *remote.GitHubRemoteRepository
+	ReleaseRepo *remote.GithubReleaseRepository
 
 	InitUC          *initUC.InitializeUseCase
 	AddUC           *addUC.AddContextUseCase
@@ -57,6 +59,7 @@ type Container struct {
 	SaveSkillCtxUC  *skillUC.SaveSkillContextUseCase
 	PushUC          *pushUC.PushToRemoteUseCase
 	PullUC          *pullUC.PullFromRemoteUseCase
+	UpdateUC        *updateUC.UpdateToLatestUseCase	
 
 	CreateBranchUC *branchUC.CreateBranchUseCase
 	ListBranchesUC *branchUC.ListBranchesUseCase
@@ -82,6 +85,7 @@ func NewContainer(projectRoot string) *Container {
 
 	githubToken := os.Getenv("DIFLOG_GITHUB_TOKEN")
 	remoteRepo := remote.NewGitHubRemoteRepository(githubToken)
+	releaseRepo := remote.NewGithubReleaseRepository()
 
 	c := &Container{
 		ProjectRoot:      projectRoot,
@@ -99,6 +103,7 @@ func NewContainer(projectRoot string) *Container {
 		OpenCodeAdapter:  openCodeAdapter,
 		CopilotAdapter:   copilotAdapter,
 		RemoteRepo:       remoteRepo,
+		ReleaseRepo:	  releaseRepo,
 	}
 
 	c.InitUC = initUC.NewInitializeUseCase(initializer)
@@ -113,6 +118,7 @@ func NewContainer(projectRoot string) *Container {
 	c.SaveSkillCtxUC = skillUC.NewSaveSkillContextUseCase(skillContextRepo, hasherSvc)
 	c.PushUC = pushUC.NewPushToRemoteUseCase(commitRepo, contextRepo, branchRepo, remoteRepo, initializer)
 	c.PullUC = pullUC.NewPullFromRemoteUseCase(commitRepo, contextRepo, branchRepo, remoteRepo, initializer)
+	c.UpdateUC = updateUC.NewUpdateToLatestUseCase(releaseRepo)
 	c.CreateBranchUC = branchUC.NewCreateBranchUseCase(branchRepo, commitRepo)
 	c.ListBranchesUC = branchUC.NewListBranchesUseCase(branchRepo)
 	c.SwitchBranchUC = branchUC.NewSwitchBranchUseCase(branchRepo)
@@ -163,6 +169,7 @@ Track, commit, and restore your ClaudeCode and GitHub Copilot CLI context files.
 		newSkillCommand(container),
 		newDetectCommand(container),
 		newStatusCommand(container),
+		newUpdateCommand(container),		
 	)
 
 	return rootCmd
