@@ -323,7 +323,7 @@ diflog skill create claude
 diflog skill create copilot
 ```
 
-**ClaudeCode:** Creates `~/.config/opencode/skills/diflog/SKILL.md` — a trigger-based skill that lets the AI read your context history and save chat snapshots.
+**ClaudeCode:** Creates `~/.claude/skills/diflog/SKILL.md` — a trigger-based skill that lets the AI read your context history and save chat snapshots.
 
 **GitHub Copilot CLI:** Appends DifLog instructions to `.github/copilot-instructions.md` in the current project.
 

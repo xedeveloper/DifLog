@@ -27,7 +27,7 @@ func newSkillCreateCommand(c *Container) *cobra.Command {
 		Short: "Create a skill for the detected or specified AI tool",
 		Long: `Create a DifLog skill/instructions file for the configured AI tool.
 
-For ClaudeCode:        creates ~/.config/opencode/skills/diflog/SKILL.md
+For ClaudeCode:        creates ~/.claude/skills/diflog/SKILL.md
 For OpenCode:          creates ~/.config/opencode/skills/diflog/SKILL.md
 For GitHub Copilot CLI: appends to .github/copilot-instructions.md
 

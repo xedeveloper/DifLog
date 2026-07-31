@@ -12,7 +12,7 @@ func NewClaudeCodeAdapter() *ClaudeCodeAdapter {
 }
 
 func (a *ClaudeCodeAdapter) CreateSkill(skillContent string) error {
-	skillDir := filepath.Join(os.Getenv("HOME"), ".config", "opencode", "skills", "diflog")
+	skillDir := filepath.Join(os.Getenv("HOME"), ".claude", "skills", "diflog")
 	if err := os.MkdirAll(skillDir, 0755); err != nil {
 		return err
 	}
