@@ -6,9 +6,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func newUpdateCommand(c *Container) *cobra.Command{
-	return  &cobra.Command{
-		Use: "update",
+func newUpdateCommand(c *Container) *cobra.Command {
+	return &cobra.Command{
+		Use:   "update",
 		Short: "Update diflog to the latest version",
 		Long: `Fetch the latest DifLog release from Girhub and
 		Replace the current running library. Currently supports macOS (amd64/arm64) and Linux (amd64)`,
@@ -17,16 +17,16 @@ func newUpdateCommand(c *Container) *cobra.Command{
 
 			result, err := c.UpdateUC.Execute()
 			if err != nil {
-				return  err
+				return err
 			}
 
-			if !result.Updated{
+			if !result.Updated {
 				fmt.Printf("Already up to date (%s).\n")
 				return nil
 			}
 
-			fmt.Printf("Updated diflog %s -> %s\n",result.CurrentVersion,result.LatestVersion)
-			fmt.Printf("Installed to %s\n",result.InstalledPath)
+			fmt.Printf("Updated diflog %s -> %s\n", result.CurrentVersion, result.LatestVersion)
+			fmt.Printf("Installed to %s\n", result.InstalledPath)
 			return nil
 		},
 	}

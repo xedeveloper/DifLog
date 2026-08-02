@@ -5,19 +5,19 @@ import "fmt"
 type ErrorCode string
 
 const (
-	ErrNotInitialized    ErrorCode = "NOT_INITIALIZED"
-	ErrAlreadyInitialized ErrorCode = "ALREADY_INITIALIZED"
-	ErrNoStagedContexts  ErrorCode = "NO_STAGED_CONTEXTS"
-	ErrContextNotFound   ErrorCode = "CONTEXT_NOT_FOUND"
-	ErrCommitNotFound    ErrorCode = "COMMIT_NOT_FOUND"
-	ErrBranchNotFound    ErrorCode = "BRANCH_NOT_FOUND"
-	ErrBranchExists      ErrorCode = "BRANCH_EXISTS"
-	ErrRemoteNotSet      ErrorCode = "REMOTE_NOT_SET"
-	ErrAIToolNotDetected ErrorCode = "AI_TOOL_NOT_DETECTED"
-	ErrStorageFailure    ErrorCode = "STORAGE_FAILURE"
-	ErrHashingFailure    ErrorCode = "HASHING_FAILURE"
-	ErrRemoteFailure     ErrorCode = "REMOTE_FAILURE"
-	ErrInvalidArgument   ErrorCode = "INVALID_ARGUMENT"
+	ErrNotInitialized      ErrorCode = "NOT_INITIALIZED"
+	ErrAlreadyInitialized  ErrorCode = "ALREADY_INITIALIZED"
+	ErrNoStagedContexts    ErrorCode = "NO_STAGED_CONTEXTS"
+	ErrContextNotFound     ErrorCode = "CONTEXT_NOT_FOUND"
+	ErrCommitNotFound      ErrorCode = "COMMIT_NOT_FOUND"
+	ErrBranchNotFound      ErrorCode = "BRANCH_NOT_FOUND"
+	ErrBranchExists        ErrorCode = "BRANCH_EXISTS"
+	ErrRemoteNotSet        ErrorCode = "REMOTE_NOT_SET"
+	ErrAIToolNotDetected   ErrorCode = "AI_TOOL_NOT_DETECTED"
+	ErrStorageFailure      ErrorCode = "STORAGE_FAILURE"
+	ErrHashingFailure      ErrorCode = "HASHING_FAILURE"
+	ErrRemoteFailure       ErrorCode = "REMOTE_FAILURE"
+	ErrInvalidArgument     ErrorCode = "INVALID_ARGUMENT"
 	ErrUnsupportedPlatform ErrorCode = "UNSUPPORTED_PLATFORM"
 )
 
@@ -37,7 +37,6 @@ func (e *DifLogError) Error() string {
 func (e *DifLogError) Unwrap() error {
 	return e.Err
 }
-
 func NewDifLogError(code ErrorCode, message string, err error) *DifLogError {
 	return &DifLogError{Code: code, Message: message, Err: err}
 }

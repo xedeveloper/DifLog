@@ -37,29 +37,29 @@ type Container struct {
 	StagingRepo      *storage.StagingLocalRepository
 	SkillContextRepo *storage.SkillContextLocalRepository
 
-	HasherService  *hashing.SHA256HasherService
-	DifferService  *diffing.TextDifferService
-	AIDetector     *ai.AIToolDetector
-	ClaudeAdapter  *ai.ClaudeCodeAdapter
+	HasherService   *hashing.SHA256HasherService
+	DifferService   *diffing.TextDifferService
+	AIDetector      *ai.AIToolDetector
+	ClaudeAdapter   *ai.ClaudeCodeAdapter
 	OpenCodeAdapter *ai.OpenCodeAdapter
-	CopilotAdapter *ai.CopilotCLIAdapter
+	CopilotAdapter  *ai.CopilotCLIAdapter
 
-	RemoteRepo *remote.GitHubRemoteRepository
+	RemoteRepo  *remote.GitHubRemoteRepository
 	ReleaseRepo *remote.GithubReleaseRepository
 
-	InitUC          *initUC.InitializeUseCase
-	AddUC           *addUC.AddContextUseCase
-	CommitUC        *commitUC.CommitContextUseCase
-	LogUC           *logUC.ViewCommitLogUseCase
-	DiffUC          *diffUC.DiffCommitsUseCase
-	CheckoutUC      *checkoutUC.CheckoutCommitUseCase
-	StatusUC        *statusUC.ViewStatusUseCase
-	DetectUC        *detectUC.DetectAIToolUseCase
-	SkillUC         *skillUC.CreateSkillUseCase
-	SaveSkillCtxUC  *skillUC.SaveSkillContextUseCase
-	PushUC          *pushUC.PushToRemoteUseCase
-	PullUC          *pullUC.PullFromRemoteUseCase
-	UpdateUC        *updateUC.UpdateToLatestUseCase	
+	InitUC         *initUC.InitializeUseCase
+	AddUC          *addUC.AddContextUseCase
+	CommitUC       *commitUC.CommitContextUseCase
+	LogUC          *logUC.ViewCommitLogUseCase
+	DiffUC         *diffUC.DiffCommitsUseCase
+	CheckoutUC     *checkoutUC.CheckoutCommitUseCase
+	StatusUC       *statusUC.ViewStatusUseCase
+	DetectUC       *detectUC.DetectAIToolUseCase
+	SkillUC        *skillUC.CreateSkillUseCase
+	SaveSkillCtxUC *skillUC.SaveSkillContextUseCase
+	PushUC         *pushUC.PushToRemoteUseCase
+	PullUC         *pullUC.PullFromRemoteUseCase
+	UpdateUC       *updateUC.UpdateToLatestUseCase
 
 	CreateBranchUC *branchUC.CreateBranchUseCase
 	ListBranchesUC *branchUC.ListBranchesUseCase
@@ -103,7 +103,7 @@ func NewContainer(projectRoot string) *Container {
 		OpenCodeAdapter:  openCodeAdapter,
 		CopilotAdapter:   copilotAdapter,
 		RemoteRepo:       remoteRepo,
-		ReleaseRepo:	  releaseRepo,
+		ReleaseRepo:      releaseRepo,
 	}
 
 	c.InitUC = initUC.NewInitializeUseCase(initializer)
@@ -169,7 +169,7 @@ Track, commit, and restore your ClaudeCode and GitHub Copilot CLI context files.
 		newSkillCommand(container),
 		newDetectCommand(container),
 		newStatusCommand(container),
-		newUpdateCommand(container),		
+		newUpdateCommand(container),
 	)
 
 	return rootCmd
