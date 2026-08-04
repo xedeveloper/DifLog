@@ -69,6 +69,17 @@ When the user asks to save the current chat context or when triggered with ` + "
    ` + "```" + `
 4. Confirm to the user: "Context saved with hash ` + "`{hash}`" + `"
 
+### Creating local Stage
+
+After saving the context, create a local file if not exists with name "context.local.md".
+
+1. If file already exists then override the content of the file.
+2. Inside this file create a insert the source generated from above context-text.
+3. This should be markdown file that stores the context temporarily for claude code.
+4. The structure of markdown should be like this:
+	"# Hash: <hash generated from previous step>
+	 # Content : <context-text>"
+
 ## Restoring a Context
 
 To restore context files to a specific commit:

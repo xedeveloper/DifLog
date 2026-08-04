@@ -75,6 +75,7 @@ func (d *AIToolDetector) claudeContextFilePaths(projectRoot string) []string {
 		filepath.Join(projectRoot, "CLAUDE.md"),
 		filepath.Join(projectRoot, ".claude", "settings.json"),
 		filepath.Join(projectRoot, ".claude", "settings.local.json"),
+		filepath.Join(projectRoot, ".difLog", "context.local.diflog"),
 	}
 	var existing []string
 	for _, p := range candidates {
